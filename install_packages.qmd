@@ -1,0 +1,131 @@
+---
+title: "EPID674 Epidemiologic Data Analysis in R"
+subtitle: "Install Packages for Base Project"
+format: html
+editor: source
+---
+
+
+## General code for all sessions
+
+```{r}
+#| label: install
+#| echo: true
+
+options(repos="https://cran.rstudio.com")
+
+
+# General markdown, tidyverse
+
+install.packages("markdown")
+
+install.packages("rmarkdown")
+
+install.packages("knitr")
+
+install.packages("tidyverse")
+
+install.packages("shiny")
+
+```
+
+## Specific code for class sections
+
+
+```{r}
+#| label: install-packages-specific
+#| echo: true
+
+# Unfiled
+
+install.packages("haven")
+
+install.packages("epiDisplay")
+
+install.packages("gmodels")
+
+install.packages("foreign")
+
+install.packages("Hmisc")
+
+install.packages("car")
+
+install.packages("corrplot")
+
+install.packages("GGally")
+
+install.packages("vioplot")
+
+install.packages("forestplot")
+
+install.packages("foreign")
+
+install.packages("gt")
+
+install.packages("expss")
+
+# Datasets session 2
+
+install.packages("here")
+
+install.packages("nhanesA")
+
+install.packages("sjlabelled")
+
+install.packages("readxl")
+
+# Graphing session 3
+
+install.packages("ggplot2")
+
+install.packages("ggpubr")
+# Error with ggpubr, installing dependencies one by one
+install.packages("RcppEigen")
+install.packages("lme4")
+install.packages("pbkrtest")
+install.packages("car")
+install.packages("rstatix")
+install.packages("ggpubr")
+
+install.packages("vidiris")
+
+install.packages("RColorBrewer")
+
+# Descriptive statistics session 4
+
+install.packages("gtsummary")
+
+install.packages("flextable")
+
+# Hypothesis testing session 5
+
+install.packages("infer")
+
+install.packages("ggcorrplot")
+
+# Regression packages? session 6
+
+install.packages("ggpubr")
+
+install.packages("broom")
+
+# Advanced session 7
+
+install.packages("survey")
+
+install.packages("rmeta")
+
+```
+
+
+
+## Check install success
+
+```{r}
+#| label: check-install-success
+
+library(rmarkdown)
+library(knitr)
+library(tidyverse)
+
+```

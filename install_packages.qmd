@@ -72,7 +72,7 @@ install.packages("nhanesA")
 
 install.packages("sjlabelled")
 
-install.packages("readxl")
+install.packages("xlsx")
 
 # Graphing session 3
 

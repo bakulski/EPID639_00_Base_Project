@@ -1,5 +1,5 @@
 ---
-title: "EPID674 Epidemiologic Data Analysis in R"
+title: "EPID639 Epidemiologic Data Analysis in R"
 subtitle: "Install Packages for Base Project"
 format: html
 editor: source
@@ -17,15 +17,25 @@ options(repos="https://cran.rstudio.com")
 
 # General markdown, tidyverse
 
-install.packages("markdown")
+#install.packages("markdown")
 
-install.packages("rmarkdown")
+#install.packages("rmarkdown")
 
-install.packages("knitr")
+#install.packages("knitr")
 
 install.packages("tidyverse")
 
-install.packages("shiny")
+#install.packages("shiny")
+
+```
+## Check install success
+
+```{r}
+#| label: check-install-success
+
+#library(rmarkdown)
+#library(knitr)
+library(tidyverse)
 
 ```
 
@@ -63,6 +73,12 @@ install.packages("foreign")
 install.packages("gt")
 
 install.packages("expss")
+```
+
+
+```{r}
+#| label: install-packages-specific
+#| echo: true
 
 # Datasets session 2
 
@@ -76,16 +92,16 @@ install.packages("xlsx")
 
 # Graphing session 3
 
-install.packages("ggplot2")
+install.packages("ggplot2") # I think this comes with the tidyverse 
 
-install.packages("ggpubr")
+install.packages("ggpubr") # I think this comes with the tidyverse 
 # Error with ggpubr, installing dependencies one by one
-install.packages("RcppEigen")
-install.packages("lme4")
-install.packages("pbkrtest")
-install.packages("car")
-install.packages("rstatix")
-install.packages("ggpubr")
+install.packages("RcppEigen") # I think this comes with the tidyverse 
+install.packages("lme4") # I think this comes with the tidyverse 
+install.packages("pbkrtest") # I think this comes with the tidyverse 
+install.packages("car") # I think this comes with the tidyverse 
+install.packages("rstatix") # I think this comes with the tidyverse 
+install.packages("ggpubr") # I think this comes with the tidyverse 
 
 install.packages("vidiris")
 
@@ -119,13 +135,4 @@ install.packages("rmeta")
 
 
 
-## Check install success
 
-```{r}
-#| label: check-install-success
-
-library(rmarkdown)
-library(knitr)
-library(tidyverse)
-
-```

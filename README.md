@@ -1,9 +1,11 @@
 # EPID639_00_Base_Project
  
 
-This repository installs packages that are relevant for the class: EPID 674 "R for Epidemiologic Data Analysis". This project should be established in Posit Cloud as a "base project" so that subsequent projects will have the relevant packages installed.
+This repository installs packages that are relevant for the class: EPID 639 "R for Epidemiologic Data Analysis". This project should be established in Posit Cloud as a "base project" so that subsequent projects will have the relevant packages installed.
 
-Remember to increase the allocation for this project in Posit Cloud under the gear icon. The default is 0.5Gb. With this level, I was unable to compile package RcppEigen, a dependency of ggpubr. I was successful with 4Gb allocation. 
+Remember to increase the allocation for this project in Posit Cloud under the gear icon. The default is 0.5Gb. With this level, I was unable to compile package RcppEigen, a dependency of ggpubr. I was successful with 4Gb allocation.
+
+In a future iteration, you can crosscheck and delete the unfiled packages against later class projects. 
 
 ## Files and descriptions:
 

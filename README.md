@@ -7,6 +7,12 @@ Remember to increase the allocation for this project in Posit Cloud under the ge
 
 In a future iteration, you can crosscheck and delete the unfiled packages against later class projects. 
 
+## Try to change the global options
+
+Tools --> Global options --> Code --> Display --> Rainbow parentheses
+Tools --> Global options --> ? Unable to figure out how to change the defaul quarto markdown from visual editor to source editor.
+
+
 ## Files and descriptions:
 
 EPID639_00_Base_Project.Rproj  This is the R project directory containing relevant files.

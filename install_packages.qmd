@@ -90,6 +90,8 @@ install.packages("sjlabelled")
 
 install.packages("xlsx")
 
+install.packages("visR") #consort diagrams
+
 # Graphing session 3
 
 install.packages("ggplot2") # I think this comes with the tidyverse 

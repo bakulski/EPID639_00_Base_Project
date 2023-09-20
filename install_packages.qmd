@@ -109,6 +109,9 @@ install.packages("vidiris")
 
 install.packages("RColorBrewer")
 
+install.packages("remotes")
+remotes::install_github("MatthewBJane/theme_park")
+
 # Descriptive statistics session 4
 
 install.packages("gtsummary")

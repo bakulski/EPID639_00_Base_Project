@@ -90,6 +90,8 @@ install.packages("sjlabelled")
 
 install.packages("xlsx")
 
+install.packages("writexl")
+
 install.packages("visR") #consort diagrams
 
 # Graphing session 3

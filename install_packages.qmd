@@ -80,6 +80,10 @@ install.packages("expss")
 #| label: install-packages-specific
 #| echo: true
 
+# Packages session 1
+
+install.packages("styler")
+
 # Datasets session 2
 
 install.packages("here")

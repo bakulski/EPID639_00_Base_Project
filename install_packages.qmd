@@ -64,15 +64,18 @@ install.packages("corrplot")
 
 install.packages("GGally")
 
-install.packages("vioplot")
+install.packages("vioplot") # I don't think I need this anymore
 
-install.packages("forestplot")
-
-install.packages("foreign")
+install.packages("forestplot") # I don't think I need this anymore
 
 install.packages("gt")
 
 install.packages("expss")
+
+# simcasual package for drawing a DAG and simulating data
+install.packages("simcausal")
+
+install.packages("easystats") # Not currently incorporated in class, recommended by 2023 GSIs
 ```
 
 
@@ -100,16 +103,17 @@ install.packages("visR") #consort diagrams
 
 # Graphing session 3
 
-install.packages("ggplot2") # I think this comes with the tidyverse 
+install.packages("ggplot2") # This comes with the tidyverse 
 
-install.packages("ggpubr") # I think this comes with the tidyverse 
-# Error with ggpubr, installing dependencies one by one
-install.packages("RcppEigen") # I think this comes with the tidyverse 
-install.packages("lme4") # I think this comes with the tidyverse 
-install.packages("pbkrtest") # I think this comes with the tidyverse 
-install.packages("car") # I think this comes with the tidyverse 
-install.packages("rstatix") # I think this comes with the tidyverse 
-install.packages("ggpubr") # I think this comes with the tidyverse 
+install.packages("ggpubr") 
+
+# Error with ggpubr in 2023, installing dependencies one by one
+# install.packages("RcppEigen") # I think this comes with the tidyverse 
+# install.packages("lme4") # I think this comes with the tidyverse 
+# install.packages("pbkrtest") # I think this comes with the tidyverse 
+# install.packages("car") # I think this comes with the tidyverse 
+# install.packages("rstatix") # I think this comes with the tidyverse 
+# install.packages("ggpubr") # I think this comes with the tidyverse 
 
 install.packages("vidiris")
 
@@ -117,6 +121,9 @@ install.packages("RColorBrewer")
 
 install.packages("remotes")
 remotes::install_github("MatthewBJane/theme_park")
+
+# Can use patchwork package to stitch plots together instead of ggarrange() !!!
+install.packages("patchwork")
 
 # Descriptive statistics session 4
 

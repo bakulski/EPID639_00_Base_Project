@@ -1,7 +1,12 @@
 # EPID639_00_Base_Project
  
 
-This repository installs packages that are relevant for the class: EPID 639 "R for Epidemiologic Data Analysis". This project should be established in Posit Cloud as a "base project" so that subsequent projects will have the relevant packages installed.
+This repository installs packages that are relevant for the class: EPID 639 "R for Epidemiologic Data Analysis". This project should be established in Posit Cloud as a "template project" so that subsequent projects will have the relevant packages installed.
+
+The first step is to make this project and install the package, set the access to all workspace members, in the special access section check the “Make this project a template” box. When a project has been designated as a template, it will appear in the New Project from Template dialog. It will no longer appear in the All Content list, but will be shown in the special Templates list and tagged as a template. You can update a template’s name, description and image in the Project Settings: Info panel.
+In the special access section also check the “Make it the RStudio / Jupyter default” box to make it the default template for future projects.
+Key resource: 
+https://docs.posit.co/cloud/guide/projects/#project-templates
 
 Remember to increase the allocation for this project in Posit Cloud under the gear icon. The default is 0.5Gb. With this level, I was unable to compile package RcppEigen, a dependency of ggpubr. I was successful with 4Gb allocation.
 

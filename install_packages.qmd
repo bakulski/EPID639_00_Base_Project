@@ -87,6 +87,8 @@ install.packages("easystats") # Not currently incorporated in class, recommended
 
 install.packages("styler")
 
+install.packages("janitor")
+
 # Datasets session 2
 
 install.packages("here")

@@ -101,7 +101,11 @@ install.packages("xlsx")
 
 install.packages("writexl")
 
-install.packages("visR") #consort diagrams
+#install.packages("visR") #consort diagrams
+
+install.packages("devtools") # visR recently kicked off of CRAN, download from github
+
+devtools::install_github("openpharma/visR") 
 
 # Graphing session 3
 

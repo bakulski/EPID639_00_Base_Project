@@ -1,0 +1,248 @@
+---
+title: "Power calculations"
+format: html
+editor: source
+---
+
+```{r}
+#| label: install_packages
+#| eval: FALSE
+
+#Gpower is a web based tool, not an R package as far as I can tell
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("Biobase")
+BiocManager::install("edgeR")
+BiocManager::install("limma")
+BiocManager::install("qvalue")
+install.packages("powerSurvEpi")
+install.packages("ssizeRNA")
+install.packages("sjstats")
+install.packages("pwr")
+
+#  ‘Biobase’, ‘edgeR’, ‘limma’, ‘qvalue’ 
+```
+
+```{r}
+library(powerSurvEpi)
+library(ssizeRNA)
+library(sjstats)
+library(pwr)
+```
+## Large R01 2024
+
+aim1_power.Rmd - This was the MWAS (ssizeRNA R package, Bi, R. & Liu, P. ssizeRNA: Sample Size Calculation for RNA-Seq Experimental Design. (2019).)
+```{r}
+#| label: pfas_pesticides_R01
+
+# Categorical
+check.power(m = 2322, # sample size per treatment group
+            nGenes = 707, # total number of genes, here exposomics chemicals
+            mu = 1e4, # mean counts in control group
+            pi0 = 0.90, # proportion of non-differentially expressed genes
+            disp = 0.5, # dispersion parameter
+            fc = 1.1, # fold change
+            sims = 1, # number of simulations
+            fdr = 0.05) # false discovery rate
+
+# Continuous????
+check.power(m = 13000, # sample size per treatment group
+            nGenes = 707, # total number of genes, here exposomics chemicals
+            mu = 1e4, # mean counts in control group
+            pi0 = 0.90, # proportion of non-differentially expressed genes
+            disp = 0.5, # dispersion parameter
+            fc = 1.1, # fold change
+            sims = 1, # number of simulations
+            fdr = 0.05) # false discovery rate
+
+```
+
+power = 92.0%, power unchanged for single metabolite models
+Note: m comes from 2322 Dementia or CIND cases, like Aim 1 above
+Power text: For untargeted differential abundance metabolomics analysis, assuming that 10% of 707 detected
+metabolites are differentially abundant with an average abundance of 10,000 and dispersion of 0.5 among
+2,322 individuals with incident CIND or dementia, we have 92.0% power to detect a log-fold-change of 1.1, (q-value false
+discovery rate=0.05). (CITATION) 
+
+
+Aim 2 (ERS) mixtures power
+```{r}
+#| label: ers_mixtures_R01
+#| 
+# Exponentiate for the logistic regression
+exp(0.07)
+
+# For the cox regression
+powerEpiCont.default(n = 13000, # total number of subjects
+                     theta = 1.09, # postulated HR
+                     sigma2 = 1, # variance of the covariate of interest
+                     psi = 0.172, # proportion of subjects with the disease
+                     rho2 = 0.2, # square of the multiple correlation coefficient between covariate of interest and other covariates
+                     alpha=0.05)
+```
+
+Linear multiple regression, GPower (details below), power = 98.0%
+
+Test family: F tests
+Statistical test: Linear multiple regression: fixed model, R2 deviation from zero
+Type of power analysis: Post hoc: compute achieved power - given alpha, sample size, and effect size
+Input parameters: 
+Effect size f2: 0.001 --> 0.002 -->  0.01
+Alpha: 0.05
+Total sample size: 13000
+Number of predictors: 7
+Power: 75.1% --> 98.0% --> 100%
+
+Logistic regression, GPower (details below), power = 98.7%, note that this is assuming prevalence of CIND or dementia outcome with 17.2% prevalence of outcome
+
+Test family: Exact
+Statistical test: Linear multiple regression: Random model
+Type of power analysis: Post hoc: compute achieved power - given alpha, sample size, and effect size
+Input parameters:
+Tails: two
+H1 p2: 0.3 --> 0.07
+H0 p2: 0
+alpha: 0.05
+Total sample size: 4472 (1300*0.172*2)
+Number of predictors: 7
+Power: 100 --> 98.7%
+Odds ratio: exp(0.07) --> 1.07
+
+
+
+Power text: Assuming a linear multiple regression model using a continuous cognition measure as the outcome
+variable and seven covariates, a sample size of n=13,000 would allow us to detect a standardized Cohen’s f^2
+effect size of 0.001 with 95.1% power at alpha=0.05 for the exposure regression coefficient of a normally
+distributed exposure. 
+
+Given the prevalence of cognitive impairment or dementia in the sample is 17.2%, we
+have 95.0% power at alpha=0.05 to detect an odds ratio of 1.09 in a logistic regression model for a normally
+distributed exposure. Similarly, we have 95.4% power to detect a hazard ratio of 1.09 assuming a normally
+distributed exposure that has a correlation of 0.2 with a covariate. (CITATION)
+
+
+Aim 3 omics power
+Smallest group is 4018 
+```{r}
+
+```
+
+
+
+
+
+
+
+
+
+
+## U01 2023
+
+
+aim1_power.Rmd - This was CIND/Dementia outcome with regression (GPower 3.1.9.7, https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower.html) and survival analysis, powerSurvEpi R package (Qiu, W., Chavarro, J., Lazarus, R., Rosner, B. & Ma, J. powerSurvEpi: Power and Sample Size Calculation for Survival Analysis of Epidemiological Studies. (2021).)
+
+
+```{r}
+#| label: metals_aim_U01
+
+powerEpiCont.default(n = 13000,
+                     theta = 1.09,
+                     sigma2 = 1,
+                     psi = 0.172,
+                     rho2 = 0.2,
+                     alpha=0.05)
+```
+
+= 95.4% power for the Cox regression model (code based)
+
+
+Linear multiple regression, GPower (details below), power = 95.1%
+Logistic regression, GPower (details below), power = 95.0%, note that this is assuming prevalence of CIND or dementia outcome with 17.2% prevalence of outcome
+
+Power text: Assuming a linear multiple regression model using a continuous cognition measure as the outcome
+variable and seven covariates, a sample size of n=13,000 would allow us to detect a standardized Cohen’s f^2
+effect size of 0.001 with 95.1% power at alpha=0.05 for the exposure regression coefficient of a normally
+distributed exposure. 
+
+Given the prevalence of cognitive impairment or dementia in the sample is 17.2%, we
+have 95.0% power at alpha=0.05 to detect an odds ratio of 1.09 in a logistic regression model for a normally
+distributed exposure. Similarly, we have 95.4% power to detect a hazard ratio of 1.09 assuming a normally
+distributed exposure that has a correlation of 0.2 with a covariate. (CITATION)
+
+
+aim2_power.Rmd - This was the MWAS (ssizeRNA R package, Bi, R. & Liu, P. ssizeRNA: Sample Size Calculation for RNA-Seq Experimental Design. (2019).)
+```{r}
+#| label: pfas_pesticides_U01
+
+check.power(m = 2322, 
+            nGenes = 707, 
+            mu = 1e4, 
+            pi0 = 0.90, 
+            disp = 0.5, 
+            fc = 1.1, 
+            sims = 1, 
+            fdr = 0.05)
+```
+power = 92.0%, power unchanged for single metabolite models
+Note: m comes from 2322 Dementia or CIND cases, like Aim 1 above
+Power text: For untargeted differential abundance metabolomics analysis, assuming that 10% of 707 detected
+metabolites are differentially abundant with an average abundance of 10,000 and dispersion of 0.5 among
+2,322 individuals with incident CIND or dementia, we have 92.0% power to detect a log-fold-change of 1.1, (q-value false
+discovery rate=0.05). (CITATION) 
+
+
+
+For modeling direct associations between metabolites and cognitive outcomes,
+assuming a linear multiple regression model with continuous cognition measure as the outcome and seven
+covariates, a sample size of n=13,000 would allow us to detect a standardized Cohen’s f^2 effect size of 0.001
+with  95.0% power (alpha=0.05) for a normally distributed exposure. Given the rate of CIND or dementia in the
+sample is 17.2%, we have  95.4% power (alpha=0.05) to detect an odds ratio of 1.09 in a logistic regression.
+
+
+aim3_power.Rmd - This was the geospatial exposure mixed model with 4 timepoint outcomes, sjstats R package. Looks like this didn't get cited properly in the version I pulled up Bibtex entry:
+@Manual{,
+    title = {sjstats: Statistical Functions for Regression Models (Version 0.19.0)},
+    author = {Daniel Lüdecke},
+    year = {2024},
+    url = {https://CRAN.R-project.org/package=sjstats},
+    doi = {10.5281/zenodo.1284472},
+  }
+```{r}
+#| label: geospatial_u01
+
+set.seed(2016)
+samplesize_mixed(
+  eff.size = 0.1,
+  power = 0.97,
+  sig.level = 0.05,
+  k = 20000,
+  n = 4,
+  icc = 0.9
+)
+
+set.seed(2016)
+samplesize_mixed(
+  eff.size = 0.2,
+  power = 0.91,
+  sig.level = 0.05,
+  k = 4000,
+  n = 4,
+  icc = 0.9
+)
+```
+Power text: With our existing findings of air pollution with ADRD using data through 2016, we expect to have
+sufficient power to detect associations with an additional 6 to 8 years of follow-up. For cognitive outcomes, a
+final sample size of 22,000 and a conservative intraclass correlation coefficient of 0.9, provides us with 97%
+power to identify a small Cohen’s d effect size of 0.1 in a 4 time-point repeated measures linear regression
+mixed model for cognitive measures. For the smallest sample of molecular fluid biomarkers, a sample size of
+4,018 with an intraclass correlation coefficient of 0.9 provides us 91% power to identify a small Cohen’s d
+effect size of 0.2 in a 4 time-point repeated measures linear mixed model. (CITATION)
+Note: this one was the trickiest, never figured how to parameterize it to calculate power from sample size, so had to play with arguments to get our approx. N.
+IF you want 13,000 final sample size after 6-8 years of follow-up for bullet 1, then only need 12,925 for 84% power.
+
+
+
+```{r}
+
+```
+

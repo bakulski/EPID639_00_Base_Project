@@ -142,8 +142,6 @@ install.packages("patchwork")
 
 install.packages("gtsummary")
 
-install.packages("flextable")
-
 # Hypothesis testing session 5
 
 install.packages("infer")

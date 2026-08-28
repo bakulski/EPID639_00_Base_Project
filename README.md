@@ -31,3 +31,10 @@ Install_packages.qmd  This is the quarto markdown file containing the code to in
 2.  Update the project settings in Posit so that the access is open to everyone in the class.
 
 3.  Then in the class workspace, set this project as the "base project". Whenever you install a new project, remember to set this as the base project.
+
+## Troubleshooting
+
+May need to configure the global github options before you can push anything. In the terminal window (next to console)
+run:
+git config --global user.email "kelly.bakulski@gmail.com"
+git config --global user.name "bakulski”

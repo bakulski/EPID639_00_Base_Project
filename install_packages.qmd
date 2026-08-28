@@ -76,6 +76,13 @@ install.packages("expss")
 install.packages("simcausal")
 
 install.packages("easystats") # Not currently incorporated in class, recommended by 2023 GSIs
+
+install.packages("dagitty")
+install.packages("ggdag")
+install.packages("cardx")
+
+library(dagitty)
+library(ggdag)
 ```
 
 
@@ -109,7 +116,7 @@ devtools::install_github("openpharma/visR")
 
 # Graphing session 3
 
-install.packages("ggplot2") # This comes with the tidyverse 
+#install.packages("ggplot2") # This comes with the tidyverse 
 
 install.packages("ggpubr") 
 

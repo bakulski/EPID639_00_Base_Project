@@ -141,6 +141,7 @@ install.packages("patchwork")
 # Descriptive statistics session 4
 
 install.packages("gtsummary")
+install.packages("webshot2")
 
 # Hypothesis testing session 5
 

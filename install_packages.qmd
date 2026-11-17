@@ -154,6 +154,7 @@ install.packages("ggcorrplot")
 install.packages("ggpubr")
 
 install.packages("broom")
+install.packages("broom.helpers")
 
 # Advanced session 7
 
